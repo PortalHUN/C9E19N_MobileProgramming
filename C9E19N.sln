@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36429.23 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApplication", "MobileApplication\MobileApplication.csproj", "{3F9CD420-FC3B-4C82-9D0B-7B6CCCABC4D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{BC8F2093-5A7E-454A-94DD-E4B7EED85DC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +15,13 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3F9CD420-FC3B-4C82-9D0B-7B6CCCABC4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F9CD420-FC3B-4C82-9D0B-7B6CCCABC4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F9CD420-FC3B-4C82-9D0B-7B6CCCABC4D7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{3F9CD420-FC3B-4C82-9D0B-7B6CCCABC4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F9CD420-FC3B-4C82-9D0B-7B6CCCABC4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC8F2093-5A7E-454A-94DD-E4B7EED85DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8F2093-5A7E-454A-94DD-E4B7EED85DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8F2093-5A7E-454A-94DD-E4B7EED85DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8F2093-5A7E-454A-94DD-E4B7EED85DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

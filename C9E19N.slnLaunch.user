@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "Multiple",
+    "Projects": [
+      {
+        "Path": "API\\API.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "MobileApplication\\MobileApplication.csproj",
+        "Action": "Start",
+        "DebugTarget": "Windows Machine"
+      }
+    ]
+  }
+]
