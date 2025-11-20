@@ -17,7 +17,7 @@ namespace MobileApplication.Model
     string description;
 
     [ObservableProperty]
-    string image;
+    string imagePath;
 
     [ObservableProperty]
     DateTime createdAt;
