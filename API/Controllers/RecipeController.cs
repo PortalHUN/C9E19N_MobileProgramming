@@ -20,6 +20,7 @@ namespace API.Controllers
       return Ok(recipes.FirstOrDefault(p => p.Id == ID));
     }
 
+    [HttpPost]
     public IActionResult Post([FromBody] Recipe rec)
     {
       if(rec.Id == 0)
