@@ -23,29 +23,30 @@ namespace MobileApplication.Connections
       database.CreateTableAsync<Recipe>().Wait();
     }
 
-    public Task CreateRecipeAsync(Recipe rec)
+    public async Task CreateRecipeAsync(Recipe rec)
     {
-      throw new NotImplementedException();
+      await database.InsertAsync(rec);
     }
 
-    public Task DeleteRecipeAsync(Recipe rec)
+    public async Task DeleteRecipeAsync(Recipe rec)
     {
-      throw new NotImplementedException();
+      await database.DeleteAsync(rec);
     }
 
-    public Task<Recipe> GetRecipeAsync(int id)
+    public async Task<Recipe> GetRecipeAsync(int id)
     {
-      throw new NotImplementedException();
+      
+      return await database.Table<Recipe>().Where(e=>e.Id == id).FirstOrDefaultAsync();
     }
 
-    public Task<List<Recipe>> GetRecipesAsync()
+    public async Task<List<Recipe>> GetRecipesAsync()
     {
-      throw new NotImplementedException();
+      return await database.Table<Recipe>().ToListAsync();
     }
 
-    public Task UpdateRecipeAsync(Recipe rec)
+    public async Task UpdateRecipeAsync(Recipe rec)
     {
-      throw new NotImplementedException();
+      await database.UpdateAsync(rec);
     }
   }
 }
