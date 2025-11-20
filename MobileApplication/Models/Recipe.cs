@@ -15,6 +15,10 @@ namespace MobileApplication.Model
     string name;
     [ObservableProperty]
     string description;
+
+    [ObservableProperty]
+    string image;
+
     [ObservableProperty]
     DateTime createdAt;
 

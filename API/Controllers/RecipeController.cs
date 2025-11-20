@@ -7,7 +7,7 @@ namespace API.Controllers
   [Route("[controller]")]
   public class RecipeController : Controller
   {
-    static List<Recipe> recipes = new List<Recipe>() { new Recipe { Id=1,Name="Asd",Description="Basd",CreatedAt=DateTime.Now} };
+    static List<Recipe> recipes = new List<Recipe>() { new Recipe { Id=1, Name="Asd", Description="Basd", Image="", CreatedAt=DateTime.Now} };
 
     [HttpGet]
     public IActionResult GetAll()
