@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MobileApplication.Model
 {
-  public class Recipe:ObservableObject
+  public partial class Recipe:ObservableObject
   {
     [ObservableProperty]
     int id;
