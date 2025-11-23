@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MobileApplication.Pages.RecipeList;
 
+[QueryProperty(nameof(EditedRecipe), "EditedRecipe")]
 public partial class RecipeListViewModel : ObservableObject
 {
   private IRecipeData _database;

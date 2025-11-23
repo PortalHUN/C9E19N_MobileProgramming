@@ -5,7 +5,12 @@
              x:Class="MobileApplication.Pages.RecipeEditor.RecipeEditor"
              x:DataType="local:RecipeEditorViewModel"
              Title="Recipe Editor">
-  <VerticalStackLayout WidthRequest="450" HorizontalOptions="Center" Spacing="10">
+  <VerticalStackLayout WidthRequest="350" HorizontalOptions="Center" Spacing="10">
+    <HorizontalStackLayout Margin="30" Spacing="10" HorizontalOptions="Center">
+      <Button Text="Save" Command="{Binding SavePetCommand}"/>
+      <Button Text="Cancel" Command="{Binding CancelCommand}"/>
+    </HorizontalStackLayout>
+    
     <StackLayout>
       <Label Text="Name"/>
       <Entry Text="{Binding Draft.Name}"/>
@@ -18,7 +23,7 @@
     
     <StackLayout>
       <Label Text="Rating"/>
-      <HorizontalStackLayout WidthRequest="450" Spacing="10" HorizontalOptions="Center">
+      <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
         <Slider VerticalOptions="Center" WidthRequest="350" Value="{Binding Draft.Rating}" Maximum="5" Minimum="1" />
         <Label VerticalOptions="Center" Text="{Binding Draft.Rating}"/>
       </HorizontalStackLayout>

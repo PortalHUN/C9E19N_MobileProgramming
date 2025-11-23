@@ -1,27 +1,37 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using MobileApplication.Interfaces;
 using MobileApplication.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MobileApplication.Pages.RecipeEditor;
 
-[QueryProperty(nameof(EditedRecipe), "Recipe")]
+[QueryProperty(nameof(Draft), "Recipe")]
 public partial class RecipeEditorViewModel : ObservableObject
 {
+  private IRecipeData _database;
+
+  public RecipeEditorViewModel(IRecipeData database)
+  {
+    _database = database;
+  }
+
   [ObservableProperty]
   Recipe editedRecipe;
 
   [ObservableProperty]
   Recipe draft;
 
-  public void InitDraft()
-  {
-    Draft = EditedRecipe.GetCopy();
-  }
+  //public void InitDraft()
+  //{
+  //  Draft = EditedRecipe.GetCopy();
+  //}
 
   [RelayCommand]
   public async Task TakePhoto()
@@ -36,5 +46,28 @@ public partial class RecipeEditorViewModel : ObservableObject
       using FileStream targetStream = File.OpenWrite(filePath);
       Draft.ImagePath = filePath;
     }
+  }
+
+  [RelayCommand]
+  public async Task SavePet()
+  {
+    Debug.WriteLine(Draft.ImagePath);
+    Debug.WriteLine(File.Exists(Draft.ImagePath));
+
+    if (Draft.Name != null || Draft.Name == "")
+    {
+      await _database.CreateRecipeAsync(Draft);
+      await Shell.Current.GoToAsync("///RecipeList");
+    }
+    else
+    {
+      WeakReferenceMessenger.Default.Send("Missing recipe name.");
+    }
+  }
+
+  [RelayCommand]
+  public async Task Cancel()
+  {
+    await Shell.Current.GoToAsync("///RecipeList");
   }
 }

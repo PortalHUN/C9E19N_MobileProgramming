@@ -2,13 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobileApplication.Pages.RecipeList"
+             xmlns:model="clr-namespace:MobileApplication.Model"
              x:Class="MobileApplication.Pages.RecipeList.RecipeList"
              x:DataType="local:RecipeListViewModel"
              Loaded="RecipeList_OnLoaded"
              Title="Recipes">
 
   <Grid RowSpacing="10" Padding="0,10">
-    <Label Text="Welcome to the application"/>
+    <CollectionView ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" SelectionMode="Single">
+      <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="model:Recipe">
+          <VerticalStackLayout>
+            <HorizontalStackLayout>
+              <Image WidthRequest="300" HeightRequest="300" Aspect="AspectFill" Source="{Binding ImagePath}"/>
+              <Label Text="{Binding Name}"/>
+              <Label Text="{Binding Rating}"/>
+            </HorizontalStackLayout>
+            <Label Text="{Binding CreatedAt}"/>
+          </VerticalStackLayout>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
     <Button 
       Text="+"
       FontSize="20"
