@@ -11,10 +11,15 @@ namespace MobileApplication.Model
   {
     [ObservableProperty]
     int id;
+
     [ObservableProperty]
     string name;
+
     [ObservableProperty]
     string description;
+
+    [ObservableProperty]
+    double rating;
 
     [ObservableProperty]
     string imagePath;
