@@ -23,5 +23,10 @@
         <Label VerticalOptions="Center" Text="{Binding Draft.Rating}"/>
       </HorizontalStackLayout>
     </StackLayout>
+
+    <StackLayout HorizontalOptions="Center">
+      <Label Text="Upload a photo" />
+      <Button Text="Upload"/>
+    </StackLayout>
   </VerticalStackLayout>
 </ContentPage>
