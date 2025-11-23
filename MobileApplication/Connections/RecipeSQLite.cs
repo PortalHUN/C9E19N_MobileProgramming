@@ -3,6 +3,7 @@ using MobileApplication.Model;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -30,6 +31,7 @@ namespace MobileApplication.Connections
 
     public async Task DeleteRecipeAsync(Recipe rec)
     {
+      Debug.WriteLine(rec.Name);
       await database.DeleteAsync(rec);
     }
 
