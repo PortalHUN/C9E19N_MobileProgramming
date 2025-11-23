@@ -35,5 +35,15 @@ public partial class RecipeDetailViewModel : ObservableObject
     await _database.DeleteRecipeAsync(SelectedRecipe);
     await Shell.Current.GoToAsync("///RecipeList");
   }
+
+  [RelayCommand]
+  public async Task UpdateAsync()
+  {
+    var param = new ShellNavigationQueryParameters
+    {
+      { "Recipe", SelectedRecipe }
+    };
+    await Shell.Current.GoToAsync("///RecipeEditor", param);
+  }
 }
 

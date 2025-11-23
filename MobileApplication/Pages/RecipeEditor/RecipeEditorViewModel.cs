@@ -52,15 +52,28 @@ public partial class RecipeEditorViewModel : ObservableObject
   [RelayCommand]
   public async Task SavePet()
   {
-    if (Draft.Name != null || Draft.Name == "")
+    if(Draft.Id == 0)
     {
-      await _database.CreateRecipeAsync(Draft);
-      await Shell.Current.GoToAsync("///RecipeList");
+      if (Draft.Name != null || Draft.Name == "")
+      {
+        await _database.CreateRecipeAsync(Draft);
+        await Shell.Current.GoToAsync("///RecipeList");
+      }
+      else
+      {
+        WeakReferenceMessenger.Default.Send("Missing recipe name.");
+      }
     }
     else
     {
-      WeakReferenceMessenger.Default.Send("Missing recipe name.");
+      await _database.UpdateRecipeAsync(Draft);
+      var param = new ShellNavigationQueryParameters
+      {
+        { "selectedRecipe", Draft }
+      };
+      await Shell.Current.GoToAsync("///RecipeDetail", param);
     }
+
   }
 
   [RelayCommand]

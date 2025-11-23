@@ -18,7 +18,7 @@
 
     <StackLayout>
       <Label Text="Description"/>
-      <Entry Text="{Binding Draft.Description}"/>
+      <Editor Text="{Binding Draft.Description}" AutoSize="TextChanges" HeightRequest="200"/>
     </StackLayout>
     
     <StackLayout>
