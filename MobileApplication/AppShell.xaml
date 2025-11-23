@@ -4,12 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MobileApplication"
-    xmlns:pages="clr-namespace:MobileApplication.Pages.RecipeList"
+    xmlns:list="clr-namespace:MobileApplication.Pages.RecipeList"
+    xmlns:editor="clr-namespace:MobileApplication.Pages.RecipeEditor"
     Title="MobileApplication">
 
-    <ShellContent
+  <ShellContent
         Title="Recipes"
-        ContentTemplate="{DataTemplate pages:RecipeList}"
+        ContentTemplate="{DataTemplate list:RecipeList}"
         Route="RecipeList" />
 
+  <ShellContent 
+    Title="Recipe Editor"
+    ContentTemplate="{DataTemplate editor:RecipeEditor}"
+    Route="RecipeEditor"
+    />
 </Shell>

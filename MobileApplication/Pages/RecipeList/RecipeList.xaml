@@ -21,6 +21,7 @@
       Padding="5"
       BackgroundColor="DodgerBlue"
       TextColor="White"
+      Command="{Binding NewRecipeCommand}"
       />
   </Grid>
   

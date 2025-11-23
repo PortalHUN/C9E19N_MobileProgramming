@@ -68,10 +68,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Pages\RecipeDetail\" />
-	  <Folder Include="Pages\RecipeEditor\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\RecipeEditor\RecipeEditor.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\RecipeList\RecipeList.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

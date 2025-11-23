@@ -1,13 +1,26 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MobileApplication.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApplication.Pages.RecipeEditor
+namespace MobileApplication.Pages.RecipeEditor;
+
+[QueryProperty(nameof(editedRecipe), "Recipe")]
+public partial class RecipeEditorViewModel : ObservableObject
 {
-    public partial class RecipeEditorViewModel
-    {
-    
-    }
+  [ObservableProperty]
+  Recipe editedRecipe;
+
+  [ObservableProperty]
+  Recipe draft;
+
+  public void InitDraft()
+  {
+    Draft = EditedRecipe.GetCopy();
+  }
+
 }
+

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MobileApplication.Interfaces;
 using MobileApplication.Model;
 using System;
@@ -28,5 +29,10 @@ public partial class RecipeListViewModel : ObservableObject
     recipeList.ForEach(e => Recipes.Add(e));
   }
 
+  [RelayCommand]
+  public async Task NewRecipeAsync()
+  {
+    await Shell.Current.GoToAsync("///RecipeEditor");
+  }
 }
 
