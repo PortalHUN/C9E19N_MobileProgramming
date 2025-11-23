@@ -19,7 +19,7 @@ namespace MobileApplication.Model
     string description;
 
     [ObservableProperty]
-    double rating;
+    int rating;
 
     [ObservableProperty]
     string imagePath;

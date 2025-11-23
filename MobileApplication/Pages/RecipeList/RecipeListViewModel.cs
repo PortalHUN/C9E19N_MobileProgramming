@@ -16,6 +16,12 @@ public partial class RecipeListViewModel : ObservableObject
   private IRecipeData _database;
   public ObservableCollection<Recipe> Recipes { get; set; }
 
+  [ObservableProperty]
+  Recipe selectedRecipe;
+
+  [ObservableProperty]
+  private Recipe editedRecipe;
+
   public RecipeListViewModel(IRecipeData database)
   {
     _database = database;
@@ -32,7 +38,12 @@ public partial class RecipeListViewModel : ObservableObject
   [RelayCommand]
   public async Task NewRecipeAsync()
   {
-    await Shell.Current.GoToAsync("///RecipeEditor");
+    SelectedRecipe = null;
+    var param = new ShellNavigationQueryParameters
+    {
+      { "Recipe", new Recipe(){CreatedAt = DateTime.Now, Rating = 1 } }
+    };
+    await Shell.Current.GoToAsync("///RecipeEditor", param);
   }
 }
 

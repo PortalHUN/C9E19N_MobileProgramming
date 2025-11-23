@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MobileApplication.Pages.RecipeEditor;
 
-[QueryProperty(nameof(editedRecipe), "Recipe")]
+[QueryProperty(nameof(EditedRecipe), "Recipe")]
 public partial class RecipeEditorViewModel : ObservableObject
 {
   [ObservableProperty]

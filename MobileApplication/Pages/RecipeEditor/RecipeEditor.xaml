@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MobileApplication.Pages.RecipeEditor"
              x:Class="MobileApplication.Pages.RecipeEditor.RecipeEditor"
+             x:DataType="local:RecipeEditorViewModel"
              Title="Recipe Editor">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+  <VerticalStackLayout WidthRequest="450" HorizontalOptions="Center" Spacing="10">
+    <StackLayout>
+      <Label Text="Name"/>
+      <Entry Text="{Binding Draft.Name}"/>
+    </StackLayout>
+
+    <StackLayout>
+      <Label Text="Description"/>
+      <Entry Text="{Binding Draft.Description}"/>
+    </StackLayout>
+    
+    <StackLayout>
+      <Label Text="Rating"/>
+      <HorizontalStackLayout WidthRequest="450" Spacing="10" HorizontalOptions="Center">
+        <Slider VerticalOptions="Center" WidthRequest="350" Value="{Binding Draft.Rating}" Maximum="5" Minimum="1" />
+        <Label VerticalOptions="Center" Text="{Binding Draft.Rating}"/>
+      </HorizontalStackLayout>
+    </StackLayout>
+  </VerticalStackLayout>
 </ContentPage>
