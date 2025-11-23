@@ -9,7 +9,7 @@
              Title="Recipes">
 
   <Grid RowSpacing="10" Padding="0,10">
-    <CollectionView ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" SelectionMode="Single">
+    <CollectionView ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" SelectionMode="Single" SelectionChangedCommand="{Binding DetailViewCommand}">
       <CollectionView.ItemTemplate>
         <DataTemplate x:DataType="model:Recipe">
           <VerticalStackLayout>

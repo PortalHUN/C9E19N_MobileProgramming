@@ -5,6 +5,7 @@ using MobileApplication.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,16 @@ public partial class RecipeListViewModel : ObservableObject
       { "Recipe", new Recipe(){CreatedAt = DateTime.Now, Rating = 1 } }
     };
     await Shell.Current.GoToAsync("///RecipeEditor", param);
+  }
+
+  [RelayCommand]
+  public async Task DetailViewAsync(Recipe Recipe)
+  {
+    if (SelectedRecipe != null)
+    {
+      Debug.WriteLine("ASDSADASDS");
+    }
+    SelectedRecipe = null;
   }
 }
 

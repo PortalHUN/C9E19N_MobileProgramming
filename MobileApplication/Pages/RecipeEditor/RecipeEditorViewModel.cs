@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MobileApplication.Pages.RecipeEditor;
 
-[QueryProperty(nameof(Draft), "Recipe")]
+[QueryProperty(nameof(EditedRecipe), "Recipe")]
 public partial class RecipeEditorViewModel : ObservableObject
 {
   private IRecipeData _database;
@@ -28,22 +28,22 @@ public partial class RecipeEditorViewModel : ObservableObject
   [ObservableProperty]
   Recipe draft;
 
-  //public void InitDraft()
-  //{
-  //  Draft = EditedRecipe.GetCopy();
-  //}
+  public void InitDraft()
+  {
+    Draft = EditedRecipe.GetCopy();
+  }
 
   [RelayCommand]
   public async Task TakePhoto()
   {
-    var photo = await MediaPicker.CapturePhotoAsync();
+    var photo = await MediaPicker.PickPhotoAsync();
     if (photo != null)
     {
-      string fileName = $"{Guid.NewGuid}.jpg";
+      string fileName = $"{Guid.NewGuid()}.jpg";
       string filePath = Path.Combine(FileSystem.AppDataDirectory, fileName);
-
       using Stream sourceStream = await photo.OpenReadAsync();
       using FileStream targetStream = File.OpenWrite(filePath);
+      await sourceStream.CopyToAsync(targetStream);
       Draft.ImagePath = filePath;
     }
   }
@@ -51,9 +51,6 @@ public partial class RecipeEditorViewModel : ObservableObject
   [RelayCommand]
   public async Task SavePet()
   {
-    Debug.WriteLine(Draft.ImagePath);
-    Debug.WriteLine(File.Exists(Draft.ImagePath));
-
     if (Draft.Name != null || Draft.Name == "")
     {
       await _database.CreateRecipeAsync(Draft);

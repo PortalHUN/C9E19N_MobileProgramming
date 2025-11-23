@@ -19,7 +19,7 @@ public partial class RecipeEditor : ContentPage
 	protected override void OnNavigatedTo(NavigatedToEventArgs e)
 	{
 		base.OnNavigatedTo(e);
-		//vm.InitDraft();
+		vm.InitDraft();
 	}
 
 }
