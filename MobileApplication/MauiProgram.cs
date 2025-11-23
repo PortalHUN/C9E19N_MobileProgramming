@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MobileApplication.Connections;
 using MobileApplication.Interfaces;
+using MobileApplication.Pages.RecipeList;
 
 namespace MobileApplication
 {
@@ -8,6 +9,8 @@ namespace MobileApplication
   {
     public static MauiApp CreateMauiApp()
     {
+
+
       var builder = MauiApp.CreateBuilder();
       builder
           .UseMauiApp<App>()
@@ -16,6 +19,8 @@ namespace MobileApplication
             fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
           });
+      builder.Services.AddSingleton<RecipeListViewModel>();
+      builder.Services.AddSingleton<RecipeList>();
       builder.Services.AddSingleton<IRecipeData, RecipeSQLite>();
 
 #if DEBUG
