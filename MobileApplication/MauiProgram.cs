@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MobileApplication.Connections;
 using MobileApplication.Interfaces;
+using MobileApplication.Pages.RecipeDetail;
 using MobileApplication.Pages.RecipeEditor;
 using MobileApplication.Pages.RecipeList;
 
@@ -24,6 +25,8 @@ namespace MobileApplication
       builder.Services.AddSingleton<RecipeList>();
       builder.Services.AddTransient<RecipeEditorViewModel>();
       builder.Services.AddTransient<RecipeEditor>();
+      builder.Services.AddTransient<RecipeDetailViewModel>();
+      builder.Services.AddTransient<RecipeDetail>();
       builder.Services.AddSingleton<IRecipeData, RecipeSQLite>();
 
 #if DEBUG

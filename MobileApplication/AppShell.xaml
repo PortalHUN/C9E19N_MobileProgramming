@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:MobileApplication"
     xmlns:list="clr-namespace:MobileApplication.Pages.RecipeList"
     xmlns:editor="clr-namespace:MobileApplication.Pages.RecipeEditor"
+    xmlns:detail="clr-namespace:MobileApplication.Pages.RecipeDetail"
     Title="MobileApplication">
 
   <ShellContent
@@ -18,4 +19,10 @@
     ContentTemplate="{DataTemplate editor:RecipeEditor}"
     Route="RecipeEditor"
     />
+
+  <ShellContent 
+  Title="Recipe Detail Viewer"
+  ContentTemplate="{DataTemplate detail:RecipeDetail}"
+  Route="RecipeDetail"
+  />
 </Shell>

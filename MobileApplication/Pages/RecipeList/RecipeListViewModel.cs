@@ -49,13 +49,16 @@ public partial class RecipeListViewModel : ObservableObject
   }
 
   [RelayCommand]
-  public async Task DetailViewAsync(Recipe Recipe)
+  public async Task DetailViewAsync()
   {
     if (SelectedRecipe != null)
     {
-      Debug.WriteLine("ASDSADASDS");
+      var param = new ShellNavigationQueryParameters
+      {
+        {"selectedRecipe", SelectedRecipe }
+      };
+      await Shell.Current.GoToAsync("///RecipeDetail", param);
     }
-    SelectedRecipe = null;
   }
 }
 

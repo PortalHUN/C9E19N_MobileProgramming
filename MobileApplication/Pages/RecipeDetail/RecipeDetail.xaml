@@ -4,34 +4,36 @@
              x:Class="MobileApplication.Pages.RecipeDetail.RecipeDetail"
              xmlns:local="clr-namespace:MobileApplication.Pages.RecipeDetail"
              x:DataType="local:RecipeDetailViewModel"
-             Title="RecipeDetail">
-  <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-    <HorizontalStackLayout HorizontalOptions="Center">
+             Title="Recipe Detail">
+  <VerticalStackLayout WidthRequest="350" Spacing="10" HorizontalOptions="Center">
+    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
       <Button Text="Edit"/>
       <Button Text="Delete"/>
-      <Button Text="Back"/>
+      <Button Text="Back" Command="{Binding BackCommand}"/>
     </HorizontalStackLayout>
 
     <VerticalStackLayout>
-      <Image Source="{Binding SelectedRecipe.ImagePath}" WidthRequest="300" HeightRequest="300"/>
+      <Image IsVisible="{Binding hasImage}" Source="{Binding Draft.ImagePath}" WidthRequest="300" HeightRequest="300"/>
 
       <HorizontalStackLayout>
         <VerticalStackLayout>
           <Label Text="Name"/>
-          <Label Text="{Binding SelectedRecipe.Name}"/>
+          <Label Text="{Binding Draft.Name}"/>
         </VerticalStackLayout>
+        
         <HorizontalStackLayout>
-          <Label Text="{Binding SelectedRecipe.Rating}"/>
+          <Label Text="asd"/>
+          <Label Text="{Binding Draft.Rating}"/>
         </HorizontalStackLayout>
       </HorizontalStackLayout>
       
 
       <VerticalStackLayout>
-        <Label Text="{Binding SelectedRecipe.Description}"/>
+        <Label Text="{Binding Draft.Description}"/>
       </VerticalStackLayout>
 
       <VerticalStackLayout>
-        <Label Text="{Binding SelectedRecipe.CreatedAt}"/>
+        <Label Text="{Binding Draft.CreatedAt}"/>
       </VerticalStackLayout>
 
     </VerticalStackLayout>
