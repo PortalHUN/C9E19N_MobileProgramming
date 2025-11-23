@@ -15,7 +15,7 @@ namespace MobileApplication.Connections
   {
     SQLite.SQLiteOpenFlags Flags = SQLite.SQLiteOpenFlags.ReadWrite | SQLite.SQLiteOpenFlags.Create;
 
-    string databasePath = Path.Combine(FileSystem.Current.AppDataDirectory, "recipes.db3");
+    string databasePath = Path.Combine(FileSystem.Current.AppDataDirectory, "recipes.db");
     SQLiteAsyncConnection database;
 
     public RecipeSQLite()
@@ -43,7 +43,7 @@ namespace MobileApplication.Connections
 
     public async Task<List<Recipe>> GetRecipesAsync()
     {
-      return await database.Table<Recipe>().ToListAsync();
+      return await database.Table<Recipe>().OrderByDescending(e=>e.CreatedAt).ToListAsync();
     }
 
     public async Task UpdateRecipeAsync(Recipe rec)

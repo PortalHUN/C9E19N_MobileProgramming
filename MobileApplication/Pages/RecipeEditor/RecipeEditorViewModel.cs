@@ -44,19 +44,19 @@ public partial class RecipeEditorViewModel : ObservableObject
       using Stream sourceStream = await photo.OpenReadAsync();
       using FileStream targetStream = File.OpenWrite(filePath);
       await sourceStream.CopyToAsync(targetStream);
-      Draft.ImagePath = filePath;
-      Draft.HasImage = true;
+      EditedRecipe.ImagePath = filePath;
+      EditedRecipe.HasImage = true;
     }
   }
 
   [RelayCommand]
   public async Task SavePet()
   {
-    if(Draft.Id == 0)
+    if(EditedRecipe.Id == 0)
     {
-      if (Draft.Name != null || Draft.Name == "")
+      if (EditedRecipe.Name != null || EditedRecipe.Name == "")
       {
-        await _database.CreateRecipeAsync(Draft);
+        await _database.CreateRecipeAsync(EditedRecipe);
         await Shell.Current.GoToAsync("///RecipeList");
       }
       else
@@ -66,10 +66,11 @@ public partial class RecipeEditorViewModel : ObservableObject
     }
     else
     {
-      await _database.UpdateRecipeAsync(Draft);
+      EditedRecipe.CreatedAt = DateTime.Now;
+      await _database.UpdateRecipeAsync(EditedRecipe);
       var param = new ShellNavigationQueryParameters
       {
-        { "selectedRecipe", Draft }
+        { "selectedRecipe", EditedRecipe }
       };
       await Shell.Current.GoToAsync("///RecipeDetail", param);
     }

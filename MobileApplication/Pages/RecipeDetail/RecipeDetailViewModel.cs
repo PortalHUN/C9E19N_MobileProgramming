@@ -45,5 +45,16 @@ public partial class RecipeDetailViewModel : ObservableObject
     };
     await Shell.Current.GoToAsync("///RecipeEditor", param);
   }
+
+  [RelayCommand]
+  public async Task ShareAsync()
+  {
+    string str = $"{SelectedRecipe.Name}\n{SelectedRecipe.Description}";
+    await Share.RequestAsync(new ShareTextRequest
+    {
+      Title = "Share Recipe",
+      Text = str
+    });
+  }
 }
 

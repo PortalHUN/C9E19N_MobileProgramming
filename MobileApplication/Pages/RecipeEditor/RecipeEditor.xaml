@@ -5,33 +5,45 @@
              x:Class="MobileApplication.Pages.RecipeEditor.RecipeEditor"
              x:DataType="local:RecipeEditorViewModel"
              Title="Recipe Editor">
-  <VerticalStackLayout WidthRequest="350" HorizontalOptions="Center" Spacing="10">
-    <HorizontalStackLayout Margin="30" Spacing="10" HorizontalOptions="Center">
-      <Button Text="Save" Command="{Binding SavePetCommand}"/>
-      <Button Text="Cancel" Command="{Binding CancelCommand}"/>
-    </HorizontalStackLayout>
-    
-    <StackLayout>
-      <Label Text="Name"/>
-      <Entry Text="{Binding Draft.Name}"/>
-    </StackLayout>
 
-    <StackLayout>
-      <Label Text="Description"/>
-      <Editor Text="{Binding Draft.Description}" AutoSize="TextChanges" HeightRequest="200"/>
-    </StackLayout>
-    
-    <StackLayout>
-      <Label Text="Rating"/>
-      <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-        <Slider VerticalOptions="Center" WidthRequest="350" Value="{Binding Draft.Rating}" Maximum="5" Minimum="1" />
-        <Label VerticalOptions="Center" Text="{Binding Draft.Rating}"/>
+  <ScrollView Margin="0,10" HorizontalOptions="Center">
+    <VerticalStackLayout WidthRequest="325" HorizontalOptions="Center" Spacing="10">
+      <HorizontalStackLayout Margin="30" Spacing="10" HorizontalOptions="Center">
+        <Button Text="Save" Command="{Binding SavePetCommand}"/>
+        <Button Text="Cancel" Command="{Binding CancelCommand}"/>
       </HorizontalStackLayout>
-    </StackLayout>
 
-    <StackLayout HorizontalOptions="Center">
-      <Label Text="Upload a photo" />
-      <Button Text="Upload" Command="{Binding TakePhotoCommand}"/>
-    </StackLayout>
-  </VerticalStackLayout>
+      <StackLayout>
+        <Label Text="Name"/>
+        <Entry Text="{Binding EditedRecipe.Name}"/>
+      </StackLayout>
+
+      <StackLayout>
+        <Label Text="Description"/>
+        <Editor Text="{Binding EditedRecipe.Description}" AutoSize="TextChanges" HeightRequest="200"/>
+      </StackLayout>
+
+      <StackLayout>
+        <Label Text="Rating"/>
+        <HorizontalStackLayout Spacing="10" WidthRequest="300" HorizontalOptions="Center">
+          <Slider VerticalOptions="Center" WidthRequest="200" Value="{Binding EditedRecipe.Rating}" Maximum="5" Minimum="1" />
+          <HorizontalStackLayout>
+            <Label Text="{Binding EditedRecipe.Rating}" VerticalOptions="Center" FontSize="18" />
+            <Label Text="★" VerticalOptions="Center" TextColor="Orange" FontSize="18"/>
+          </HorizontalStackLayout>
+        </HorizontalStackLayout>
+      </StackLayout>
+
+      <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+        <Label Text="Upload a photo" HorizontalOptions="Center"/>
+        <Border StrokeThickness="0" WidthRequest="325">
+          <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10,10,10,10"/>
+          </Border.StrokeShape>
+          <Image Source="{Binding EditedRecipe.ImagePath}"/>
+        </Border>
+        <Button Text="Upload" Command="{Binding TakePhotoCommand}" HorizontalOptions="Center"/>
+      </VerticalStackLayout>
+    </VerticalStackLayout>
+  </ScrollView>
 </ContentPage>

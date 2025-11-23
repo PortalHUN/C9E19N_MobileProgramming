@@ -6,30 +6,40 @@
              x:DataType="local:RecipeDetailViewModel"
              Title="Recipe Detail">
 
-  <ScrollView>
-    <VerticalStackLayout WidthRequest="350" Spacing="10" HorizontalOptions="Center">
-      <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+  <ScrollView HorizontalOptions="Center">
+    <VerticalStackLayout WidthRequest="325" Spacing="10" HorizontalOptions="Center">
+      <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" Margin="0,5,0,5">
+        <Button Text="Share" Command="{Binding ShareCommand}"/>
         <Button Text="Edit" Command="{Binding UpdateCommand}"/>
         <Button Text="Delete" Command="{Binding DeleteCommand}"/>
         <Button Text="Back" Command="{Binding BackCommand}"/>
       </HorizontalStackLayout>
 
       <VerticalStackLayout>
-        <Image IsVisible="{Binding SelectedRecipe.HasImage}" Source="{Binding SelectedRecipe.ImagePath}" WidthRequest="300" HeightRequest="300"/>
+        <Border StrokeThickness="0" WidthRequest="325" IsVisible="{Binding HasImage}">
+          <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10,10,10,10"/>
+          </Border.StrokeShape>
+          <Image IsVisible="{Binding SelectedRecipe.HasImage}" Source="{Binding SelectedRecipe.ImagePath}"/>
+        </Border>
 
-        <HorizontalStackLayout>
-          <Label Text="{Binding SelectedRecipe.Id}"/>
-          <Label Text="{Binding SelectedRecipe.Name}"/>
-          <Label Text="{Binding SelectedRecipe.Rating}"/>
-        </HorizontalStackLayout>
+        <Grid ColumnDefinitions="*,auto" WidthRequest="325" Padding="10,10,10,0">
+          <Label Text="{Binding SelectedRecipe.Name}" FontSize="20" FontAttributes="Bold"/>
+          <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
+            <Label Text="{Binding SelectedRecipe.Rating}" VerticalOptions="Center" FontSize="18" />
+            <Label Text="★" VerticalOptions="Center" TextColor="Orange" FontSize="18"/>
+          </HorizontalStackLayout>
+        </Grid>
 
+        <Grid ColumnDefinitions="*,auto" WidthRequest="325" Padding="10,0">
+          <Label Text="Updated:"/>
+          <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
+            <Label Text="{Binding SelectedRecipe.CreatedAt}" VerticalOptions="Center" />
+          </HorizontalStackLayout>
+        </Grid>
 
-        <VerticalStackLayout>
+        <VerticalStackLayout Padding="10,10" WidthRequest="325">
           <Label Text="{Binding SelectedRecipe.Description}"/>
-        </VerticalStackLayout>
-
-        <VerticalStackLayout>
-          <Label Text="{Binding SelectedRecipe.CreatedAt}"/>
         </VerticalStackLayout>
 
       </VerticalStackLayout>
