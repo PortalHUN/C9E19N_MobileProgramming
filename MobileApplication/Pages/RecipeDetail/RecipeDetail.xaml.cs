@@ -13,6 +13,5 @@ public partial class RecipeDetail : ContentPage
   protected override void OnNavigatedTo(NavigatedToEventArgs args)
   {
     base.OnNavigatedTo(args);
-		vm.InitDraft();
   }
 }

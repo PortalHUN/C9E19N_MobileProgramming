@@ -14,7 +14,7 @@
         <DataTemplate x:DataType="model:Recipe">
           <VerticalStackLayout>
             <HorizontalStackLayout>
-              <Image WidthRequest="300" HeightRequest="300" Aspect="AspectFill" Source="{Binding ImagePath}"/>
+              <Image IsVisible="{Binding HasImage}" WidthRequest="300" HeightRequest="300" Aspect="AspectFill" Source="{Binding ImagePath}"/>
               <Label Text="{Binding Name}"/>
               <Label Text="{Binding Rating}"/>
             </HorizontalStackLayout>

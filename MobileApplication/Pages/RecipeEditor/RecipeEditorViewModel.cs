@@ -45,6 +45,7 @@ public partial class RecipeEditorViewModel : ObservableObject
       using FileStream targetStream = File.OpenWrite(filePath);
       await sourceStream.CopyToAsync(targetStream);
       Draft.ImagePath = filePath;
+      Draft.HasImage = true;
     }
   }
 

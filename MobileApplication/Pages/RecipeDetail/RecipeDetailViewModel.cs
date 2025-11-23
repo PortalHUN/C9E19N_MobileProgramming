@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MobileApplication.Interfaces;
 using MobileApplication.Model;
 using System;
 using System.Collections.Generic;
@@ -12,33 +13,25 @@ namespace MobileApplication.Pages.RecipeDetail;
 [QueryProperty(nameof(SelectedRecipe), "selectedRecipe")]
 public partial class RecipeDetailViewModel : ObservableObject
 {
+  private IRecipeData _database;
   [ObservableProperty]
   Recipe selectedRecipe;
 
-  [ObservableProperty]
-  Recipe draft;
-
-  public bool hasImage
+  public RecipeDetailViewModel(IRecipeData database)
   {
-    get
-    {
-      return Draft?.ImagePath != null && Draft?.ImagePath != "";
-    }
-    set
-    {
-      OnPropertyChanged();
-    }
-  }
-
-  public void InitDraft()
-  {
-    Draft = SelectedRecipe.GetCopy();
-    hasImage = true;
+    _database = database;
   }
 
   [RelayCommand]
   public async Task BackAsync()
   {
+    await Shell.Current.GoToAsync("///RecipeList");
+  }
+
+  [RelayCommand]
+  public async Task DeleteAsync()
+  {
+    await _database.DeleteRecipeAsync(SelectedRecipe);
     await Shell.Current.GoToAsync("///RecipeList");
   }
 }

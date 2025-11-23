@@ -8,32 +8,32 @@
   <VerticalStackLayout WidthRequest="350" Spacing="10" HorizontalOptions="Center">
     <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
       <Button Text="Edit"/>
-      <Button Text="Delete"/>
+      <Button Text="Delete" Command="{Binding DeleteCommand}"/>
       <Button Text="Back" Command="{Binding BackCommand}"/>
     </HorizontalStackLayout>
 
     <VerticalStackLayout>
-      <Image IsVisible="{Binding hasImage}" Source="{Binding Draft.ImagePath}" WidthRequest="300" HeightRequest="300"/>
+      <Image IsVisible="{Binding SelectedRecipe.HasImage}" Source="{Binding SelectedRecipe.ImagePath}" WidthRequest="300" HeightRequest="300"/>
 
       <HorizontalStackLayout>
         <VerticalStackLayout>
           <Label Text="Name"/>
-          <Label Text="{Binding Draft.Name}"/>
+          <Label Text="{Binding SelectedRecipe.Name}"/>
         </VerticalStackLayout>
         
         <HorizontalStackLayout>
           <Label Text="asd"/>
-          <Label Text="{Binding Draft.Rating}"/>
+          <Label Text="{Binding SelectedRecipe.Rating}"/>
         </HorizontalStackLayout>
       </HorizontalStackLayout>
       
 
       <VerticalStackLayout>
-        <Label Text="{Binding Draft.Description}"/>
+        <Label Text="{Binding SelectedRecipe.Description}"/>
       </VerticalStackLayout>
 
       <VerticalStackLayout>
-        <Label Text="{Binding Draft.CreatedAt}"/>
+        <Label Text="{Binding SelectedRecipe.CreatedAt}"/>
       </VerticalStackLayout>
 
     </VerticalStackLayout>

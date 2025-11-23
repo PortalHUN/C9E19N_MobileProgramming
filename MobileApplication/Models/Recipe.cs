@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace MobileApplication.Model
   public partial class Recipe:ObservableObject
   {
     [ObservableProperty]
+    [property:PrimaryKey]
+    [property:AutoIncrement]
     int id;
 
     [ObservableProperty]
@@ -26,6 +29,9 @@ namespace MobileApplication.Model
 
     [ObservableProperty]
     DateTime createdAt;
+
+    [ObservableProperty]
+    bool hasImage;
 
     public Recipe GetCopy()
     {
