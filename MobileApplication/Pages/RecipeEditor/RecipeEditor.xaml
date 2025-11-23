@@ -26,7 +26,7 @@
 
     <StackLayout HorizontalOptions="Center">
       <Label Text="Upload a photo" />
-      <Button Text="Upload"/>
+      <Button Text="Upload" Command="{Binding TakePhotoCommand}"/>
     </StackLayout>
   </VerticalStackLayout>
 </ContentPage>
