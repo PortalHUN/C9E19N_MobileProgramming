@@ -12,27 +12,22 @@
     <CollectionView ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" SelectionMode="Single" SelectionChangedCommand="{Binding DetailViewCommand}">
       <CollectionView.ItemTemplate>
         <DataTemplate x:DataType="model:Recipe">
-          <Border Padding="0,0" Stroke="DodgerBlue">
-            <Border.StrokeShape>
-              <RoundRectangle CornerRadius="10,0,0,10"/>
-            </Border.StrokeShape>
-            <VerticalStackLayout Padding="5" Margin="5">
-              <Border StrokeThickness="0" WidthRequest="325" IsVisible="{Binding HasImage}">
-                <Border.StrokeShape>
-                  <RoundRectangle CornerRadius="10,10,10,10"/>
-                </Border.StrokeShape>
-                <Image Source="{Binding ImagePath}"/>
-              </Border>
-              <Grid ColumnDefinitions="*, auto">
-                <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
-                <HorizontalStackLayout Grid.Column="1">
-                  <Label Text="{Binding Rating}" VerticalOptions="Center" FontSize="18" />
-                  <Label Text="★" VerticalOptions="Center" TextColor="Orange" FontSize="18"/>
-                </HorizontalStackLayout>
-              </Grid>
-              <Label Text="{Binding CreatedAt}" HorizontalOptions="End"/>
-            </VerticalStackLayout>
-          </Border>
+          <VerticalStackLayout Padding="5" Margin="5">
+            <Border StrokeThickness="0" WidthRequest="325" IsVisible="{Binding HasImage}">
+              <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10,10,10,10"/>
+              </Border.StrokeShape>
+              <Image Source="{Binding ImagePath}"/>
+            </Border>
+            <Grid ColumnDefinitions="*, auto">
+              <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+              <HorizontalStackLayout Grid.Column="1">
+                <Label Text="{Binding Rating}" VerticalOptions="Center" FontSize="18" />
+                <Label Text="★" VerticalOptions="Center" TextColor="Orange" FontSize="18"/>
+              </HorizontalStackLayout>
+            </Grid>
+            <Label Text="{Binding CreatedAt}" HorizontalOptions="End"/>
+          </VerticalStackLayout>
         </DataTemplate>
       </CollectionView.ItemTemplate>
     </CollectionView>
